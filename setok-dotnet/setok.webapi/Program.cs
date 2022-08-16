@@ -1,5 +1,10 @@
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+
 var builder = WebApplication.CreateBuilder(args);
 AddServices(builder);
+AddSwagger(builder.Services);
+
 var app = builder.Build();
 
 // TODO: Configure the development environment.
@@ -22,9 +27,15 @@ void AddServices(WebApplicationBuilder builder)
     builder.Services.AddControllers();
     builder.Services.AddScoped<SetokContext>();
     builder.Services.AddScoped<IMessageService, MessageService>();
+}
 
+void AddSwagger(IServiceCollection services)
+{
     // TODO: Configure Swagger
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Setok API", Version = "v1" });
+    });
 }

@@ -41,8 +41,6 @@ class MessageService : IMessageService
         throw new NotImplementedException();
     }
 
-
-
     public Task<string> UpdateMessage(string message)
     {
         throw new NotImplementedException();

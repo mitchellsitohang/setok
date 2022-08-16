@@ -7,14 +7,22 @@
     <RootNamespace>setok_api_dotnet</RootNamespace>
   </PropertyGroup>
 
-  <!-- <ItemGroup>
-  
-  </ItemGroup> -->
+  <ItemGroup>
+
+    <Folder Include="wwwroot\swagger\v1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\setok.db\setok.db.csproj" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="dotnet tool restore" />
+      <Exec Command="dotnet swagger tofile --output swagger.json $(OutputPath)\$(AssemblyName).dll v1 " />
+      <Exec Command="dotnet swagger tofile --yaml --output swagger.yml $(OutputPath)\$(AssemblyName).dll v1 " />
+  </Target>
 
 </Project>
