@@ -1,12 +1,10 @@
-namespace setok.db
+public class Message
 {
-    public class Message
-    {
-        public string Content { get; set; }
+    public int id { get; set; }
+    public string Content { get; set; }
 
-        public Message(string content)
-        {
-            Content = content;
-        }
+    public Message(string content)
+    {
+        Content = content;
     }
 }

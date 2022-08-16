@@ -10,22 +10,12 @@ public class SetokContext : DbContext
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);
-        DbPath = System.IO.Path.Join(path, "blogging.db");
+        DbPath = System.IO.Path.Join(path, "setok.db");
     }
 
+    // TODO: Implement regular database solution when available.
     // The following configures EF to create a Sqlite database file in the
     // special "local" folder for your platform.
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite($"Data Source={DbPath}");
-}
-
-public class Message
-{
-    public int id { get; set; }
-    public string Content { get; set; }
-
-    public Message(string content)
-    {
-        Content = content;
-    }
 }
