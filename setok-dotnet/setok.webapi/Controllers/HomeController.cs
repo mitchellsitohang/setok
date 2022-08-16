@@ -18,7 +18,7 @@ public class HomeController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Message>>> Get()
     {
-        return Ok(await _messageService.GetMessagesAsync());
+        return Ok((await _messageService.GetMessagesAsync()).ToList());
     }
 
     [HttpPost]
