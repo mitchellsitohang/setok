@@ -1,0 +1,33 @@
+<div *ngIf="createdItem">
+    <div *ngFor="let property of createdItem | keyvalue">
+      <div *ngIf="property.key === 'id'">
+        <h1>
+          {{property.key}}:{{property.value}}
+        </h1>
+      </div>
+      <div>{{property.key}}:{{property.value}}</div>
+    </div>
+</div>
+
+<form [formGroup]="formGroup">
+  <div *ngFor="let control of controls | keyvalue" class="form-group">
+      <label for="{{control.key}}">{{control.key}}</label>
+      <br>
+      <input type="text" class="form-control" id="{{control.key}}" formControlName="{{control.key}}">
+  </div>
+</form>
+
+<button (click)="onSubmit(formGroup)" class="btn btn-primary">Submit</button>
+
+<div *ngIf="items.length > 0">
+  <div *ngFor="let item of items">
+    <div *ngFor="let property of item | keyvalue">
+      <div *ngIf="property.key === 'id'">
+        <h1>
+          {{property.key}}:{{property.value}}
+        </h1>
+      </div>
+      <div>{{property.key}}:{{property.value}}</div>
+    </div>
+  <div>
+</div>

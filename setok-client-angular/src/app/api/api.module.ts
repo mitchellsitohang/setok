@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { HomeService } from './services/home.service';
+import { ItemService } from './services/item.service';
 
 /**
  * Module that provides all services and configuration.
@@ -15,6 +16,7 @@ import { HomeService } from './services/home.service';
   declarations: [],
   providers: [
     HomeService,
+    ItemService,
     ApiConfiguration
   ],
 })

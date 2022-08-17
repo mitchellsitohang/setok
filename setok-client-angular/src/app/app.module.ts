@@ -7,15 +7,19 @@ import { ApiModule } from './api/api.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SetokHttpInterceptor } from './interceptors/SetokHttpInterceptor';
+import { ItemsComponent } from './components/items/items.component';
+import { environment } from 'src/environments/environment';
+import { FormService } from './services/form.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ApiModule,
+    ApiModule.forRoot({ rootUrl: environment.apiBaseUrl }),
     ReactiveFormsModule,
     HttpClientModule
   ],
@@ -23,7 +27,8 @@ import { SetokHttpInterceptor } from './interceptors/SetokHttpInterceptor';
     provide: HTTP_INTERCEPTORS,
     useClass: SetokHttpInterceptor,
     multi: true
-  }  ],
+  },
+  FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
