@@ -2,23 +2,27 @@ using Microsoft.EntityFrameworkCore;
 
 class MessageService : IMessageService
 {
-    private SetokContext dbContext { get; }
+    private ILoggerService<MessageService> Logger { get; }
+    private SetokContext DbContext { get; }
 
-    public MessageService(SetokContext dbContext)
+    public MessageService(ILoggerService<MessageService> logger, SetokContext dbContext)
     {
-        this.dbContext = dbContext;
+        Logger = logger;
+        DbContext = dbContext;
     }
 
     public async Task<bool> CreateMessageAsync(string message)
     {
+        using(Logger.BeginScope(nameof(CreateMessageAsync)));
         try
         {
-            await dbContext.AddAsync(new Message(message));
-            await dbContext.SaveChangesAsync();
+            await DbContext.AddAsync(new Message(message));
+            await DbContext.SaveChangesAsync();
+            Logger.LogInformation("Saved message to DB: " + message); 
         }
         catch (Exception exception)
         {
-            System.Console.WriteLine(exception.Message);
+            Logger.LogError($"Exception thrown: {nameof(CreateMessageAsync)} {message} {exception.Message}");
             return false;
         }
 
@@ -27,7 +31,16 @@ class MessageService : IMessageService
 
     public async Task<IEnumerable<Message>> GetMessagesAsync()
     {
-        var messages = await dbContext.Messages.ToListAsync();
+        var messages = new List<Message>();
+        try
+        {
+            messages = await DbContext.Messages.ToListAsync();
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError($"Exception thrown: {nameof(GetMessagesAsync)} {exception.Message}");
+            throw exception;
+        }
         return messages;
     }
 

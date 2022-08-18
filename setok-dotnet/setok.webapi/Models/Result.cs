@@ -1,5 +1,3 @@
-namespace setok_api_dotnet;
-
 public class SetokResult
 {
     public string? Message { get; set; }

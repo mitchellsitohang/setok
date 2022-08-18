@@ -2,32 +2,34 @@ using AutoMapper;
 
 public class ItemService : IItemService
 {
-    private readonly SetokContext dbContext;
-    private readonly IMapper mapper;
+    private SetokContext DbContext { get; }
+    private IMapper Mapper { get; }
+    private ILoggerService<ItemController>  Logger { get; }
 
-    public ItemService(SetokContext dbContext, IMapper mapper)
+    public ItemService(SetokContext dbContext, IMapper mapper, ILoggerService<ItemController> logger)
     {
-        this.dbContext = dbContext;
-        this.mapper = mapper;
+        DbContext = dbContext;
+        Mapper = mapper;
+        Logger = logger;
     }
 
     public async Task<ItemDto> CreateItemAsync(ItemDto item)
     {
-        await dbContext.AddAsync(mapper.Map<Item>(item));
-        await dbContext.SaveChangesAsync();
+        await DbContext.AddAsync(Mapper.Map<Item>(item));
+        await DbContext.SaveChangesAsync();
         return item;
     }
 
-    public async Task<ItemDto> DeleteItemAsync(int id)
+    public async Task<ItemDto?> DeleteItemAsync(int id)
     {
-        var item = await dbContext.Items.FindAsync(id);
-        if (item == null)
+        Item? item = await DbContext.Items.FindAsync(id);
+        if(item != null) 
         {
-            return null;
+            DbContext.Items.Remove(item);
+            await DbContext.SaveChangesAsync();
+            return Mapper?.Map<ItemDto>(item);
         }
-        dbContext.Items.Remove(item);
-        await dbContext.SaveChangesAsync();
-        return mapper.Map<ItemDto>(item);
+        return null;
     }
 
     public Task<IEnumerable<ItemDto>> GetItemAsync(int id)
@@ -38,10 +40,10 @@ public class ItemService : IItemService
     public async Task<IEnumerable<ItemDto>> GetItemsAsync()
     {
         var items = new List<ItemDto>();
-        var itemsAsync = dbContext.Items.GetAsyncEnumerator();
+        var itemsAsync = DbContext.Items.GetAsyncEnumerator();
         while (await itemsAsync.MoveNextAsync())
         {
-            items.Add(mapper.Map<ItemDto>(itemsAsync.Current));
+            items.Add(Mapper.Map<ItemDto>(itemsAsync.Current));
         }
         return items;
     }

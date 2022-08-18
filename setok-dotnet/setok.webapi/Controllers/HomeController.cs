@@ -1,31 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace setok_api_dotnet.Controllers;
-
 [ApiController]
 [Route("[controller]")]
-public class HomeController : ControllerBase
+public class HomeController : ControllerBase, IHasLogger
 {
-    private readonly ILogger<HomeController> _logger;
-    private IMessageService _messageService { get; set;}
+    private readonly ILoggerService<HomeController> logger;
+    private IMessageService messageService;
 
-    public HomeController(ILogger<HomeController> logger, IMessageService messageService)
+    public HomeController(ILoggerService<HomeController> logger, IMessageService messageService)
     {
-        _messageService = messageService;
-        _logger = logger;
+        this.messageService = messageService;
+        this.logger = logger;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Message>>> Get()
     {
-        return Ok((await _messageService.GetMessagesAsync()).ToList());
+        using(logger.BeginScope(nameof(Get))) 
+        {
+            return Ok((await messageService.GetMessagesAsync()).ToList());
+        }
     }
 
     [HttpPost]
     public async Task<ActionResult<SetokResult>> Post(string message)
     {
-        var result = await _messageService.CreateMessageAsync(message);
-
-        return result ? new SetokResult($"Added message: {message}") : BadRequest();
+        using(logger.BeginScope(nameof(Post))) 
+        {
+            var result = await messageService.CreateMessageAsync(message);
+            return result ? new SetokResult($"Added message: {message}") : BadRequest("Exception thrown when adding message!");
+        }
     }
 }
