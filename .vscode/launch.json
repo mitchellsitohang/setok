@@ -1,6 +1,20 @@
 {
     "version": "0.2.0",
+    "compounds": [
+        {
+          "name": "- Start Setok Server/Client",
+          "configurations": ["Launch Setok Web Api", "Launch Setok Client"],
+          "stopAll": true
+        }
+      ],
     "configurations": [
+        {
+            "name": "Launch Setok Client",
+            "type": "chrome",
+            "request": "launch",
+            "preLaunchTask": "npm start",
+            "url": "http://localhost:4200/"
+        },
         {
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
@@ -26,6 +40,12 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
+        },
+        {
+            "name": "npm Install",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "npm install",
         },
         {
             "name": ".NET Core Attach",

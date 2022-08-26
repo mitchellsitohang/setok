@@ -16,13 +16,6 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="6.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="6.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
     <ProjectReference Include="..\setok.db\setok.db.csproj" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
