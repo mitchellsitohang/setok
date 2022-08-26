@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-class MessageService : IMessageService
+class MessageService : IMessageService, IHasLogger
 {
     private ILoggerService<MessageService> Logger { get; }
     private SetokContext DbContext { get; }

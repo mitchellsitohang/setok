@@ -1,6 +1,6 @@
 using AutoMapper;
 
-public class ItemService : IItemService
+public class ItemService : IItemService, IHasLogger
 {
     private SetokContext DbContext { get; }
     private IMapper Mapper { get; }
