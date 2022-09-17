@@ -1,0 +1,44 @@
+html, 
+body, 
+#background { 
+  width: auto;
+  min-height: 100vh;
+  background-color:navajowhite;
+}
+
+div {
+    text-align: center;
+}
+
+h1 {
+    background-color: rgb(245, 193, 129);
+    color:azure;
+    letter-spacing: 3px;
+    font-size: 40px;
+    font-family: monospace;
+    border: 10px solid rgb(124, 76, 4);
+    padding: 20px;
+}
+
+p {
+    color:black;
+    font-size: 50px;
+    letter-spacing: 5px;
+    font-family: Brush Script MT, Brush Script Std, cursive;
+    font-weight: bold;
+    animation-duration: 3s;
+    animation-name: slidein;
+    margin-top: 150px;
+}
+
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
