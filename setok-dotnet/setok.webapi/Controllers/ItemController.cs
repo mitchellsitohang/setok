@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("[controller]")]
-public class ItemController : ControllerBase
+public class ItemController : ControllerBase, IHasLogger
 {
     private readonly ILoggerService<ItemController> logger;
     private readonly IItemService itemService;

@@ -1,8 +1,8 @@
 using AutoMapper;
 
-public class SetokProfile : Profile
+public class WebApiProfile : Profile
 {
-	public SetokProfile()
+	public WebApiProfile()
 	{
 		CreateMap<ItemDto, Item>();
 		CreateMap<Item, ItemDto>();

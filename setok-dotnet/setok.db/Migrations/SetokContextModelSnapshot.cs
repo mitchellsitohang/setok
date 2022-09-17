@@ -45,7 +45,7 @@ namespace setok.db.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items");
+                    b.ToTable("Items", (string)null);
                 });
 
             modelBuilder.Entity("Message", b =>
@@ -60,7 +60,7 @@ namespace setok.db.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 #pragma warning restore 612, 618
         }

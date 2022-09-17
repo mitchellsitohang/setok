@@ -2,6 +2,31 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "npm install",
+            "type": "shell",
+            "command": ["cd setok-client-angular; npm install"],
+            "group": "build"
+        },
+        {
+            "label": "npm start",
+            "type": "shell",
+            "command": ["cd setok-client-angular; npm run develop"],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "typescript",
+                "pattern": "$tsc",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": {
+                        "regexp": "(.*?)"
+                    },
+                    "endsPattern": {
+                        "regexp": "bundle generation complete"
+                    }
+                }
+            }
+        },
+        {
             "label": "build",
             "command": "dotnet",
             "type": "process",
