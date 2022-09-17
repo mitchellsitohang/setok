@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./taury.component.scss']
 })
 export class TauryComponent implements OnInit {
-  public name: string = 'Tau';
+  public name: string = 'Tautjes';
 
   constructor() { }
 
