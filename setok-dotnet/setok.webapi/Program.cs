@@ -32,12 +32,13 @@ catch (System.Exception e)
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    ConfigureAppForDevelopment(app);
+    
 }
-app.UseHsts();
+// app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseAuthorization();
+ConfigureAppForDevelopment(app);
+// app.UseAuthorization();
 app.UseRouting();
 app.MapControllers();
 app.Run();
