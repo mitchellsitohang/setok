@@ -11,7 +11,7 @@ import { HomeService } from './api/services/home.service';
 })
 export class AppComponent {
   title = 'setok-client-angular';
-  messages: Message[] = new Array<Message>;
+  messages: Message[] = new Array<Message>();
   messageControl = new FormControl('');
   messageAdded: string = '';
 
