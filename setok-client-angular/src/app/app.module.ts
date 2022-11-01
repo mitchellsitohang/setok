@@ -10,11 +10,13 @@ import { SetokHttpInterceptor } from './interceptors/SetokHttpInterceptor';
 import { ItemsComponent } from './components/items/items.component';
 import { environment } from 'src/environments/environment';
 import { FormService } from './services/form.service';
+import { ProductComponent } from './components/products/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent
+    ItemsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
