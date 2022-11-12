@@ -4,13 +4,13 @@
         {
             "label": "npm install",
             "type": "shell",
-            "command": ["cd setok-client-angular; npm install"],
+            "command": ["cd ./setok-client-angular; npm install"],
             "group": "build"
         },
         {
             "label": "npm start",
             "type": "shell",
-            "command": ["cd setok-client-angular; npm run develop"],
+            "command": ["cd ./setok-client-angular; npm run develop"],
             "group": "build",
             "problemMatcher": {
                 "owner": "typescript",

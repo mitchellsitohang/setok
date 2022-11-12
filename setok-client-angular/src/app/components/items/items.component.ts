@@ -9,15 +9,15 @@ import { FormService } from 'src/app/services/form.service';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit {
-  formGroup: FormGroup;
+  // formGroup: FormGroup;
   controls: any;
   createdItem?: Map<string, any>;
   items: Map<string, any>[] = [];
 
   constructor(private formService: FormService, private itemService: ItemService) {
     const properties = ["category", "description", "image", "name", "price", "quantity"];
-    this.formGroup = this.formService.getFormGroup(properties);
-    this.controls  = this.formGroup.controls;
+    // this.formGroup = this.formService.getFormGroup(properties);
+    // this.controls  = this.formGroup.controls;
   }
 
   ngOnInit(): void {

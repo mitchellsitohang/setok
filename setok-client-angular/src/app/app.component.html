@@ -1,12 +1,2 @@
-<label for="message">Message: </label>
-<input id="message" type="text" [formControl]="messageControl">
-<button (click)="submit()">send</button>
-
-<div *ngFor="let message of messages">
-  {{message.id}} {{message.content}}
-  <br>
-</div>
-
+<h1>{{ title }}</h1>
 <router-outlet></router-outlet>
-
-Hi

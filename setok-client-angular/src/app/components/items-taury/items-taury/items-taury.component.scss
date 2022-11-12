@@ -1,0 +1,39 @@
+
+h1 {
+    margin: 0 5px 5px 25px;
+}
+
+form {
+    margin: 0 5px 5px 5px;
+    width: 500px;
+
+    mat-form-field.form-container {
+    display: block;
+    margin: 15px 0 20px 25px;
+
+    mat-label {
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+}
+    
+}
+
+button.save-items-button {
+    margin-left: 25px;
+    padding: 8px;
+}
+
+div.order-summary {
+    width: 250px;
+    padding: 5px;
+    margin: 20px 5px 5px 10px;
+
+    .mat-card {
+        background-color: aliceblue;
+
+        .mat-card-title {
+            font-weight: 900;
+        }
+    }
+}
