@@ -22,12 +22,17 @@ form {
 button.save-items-button {
     margin-left: 25px;
     padding: 8px;
+    position: absolute;
 }
 
 div.order-summary {
     width: 250px;
     padding: 5px;
     margin: 20px 5px 5px 10px;
+    display: inline-block;
+    position: relative;
+    left: 650px;
+    bottom: 490px;
 
     .mat-card {
         background-color: aliceblue;

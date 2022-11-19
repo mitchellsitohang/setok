@@ -60,11 +60,11 @@ export class ItemsTauryComponent implements OnInit {
     }), (error: any) => {
       console.log(error);
     };
+    formGroup.reset();
   }
 
   private getItems() {
     this.itemService.itemGet$Json().subscribe(result => {
-      console.log(result);
       this.items = result.map(item => new Map(Object.entries(item))).reverse();
     }), (error: any) => {
       console.log(error);
