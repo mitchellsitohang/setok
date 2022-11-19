@@ -1,0 +1,21 @@
+<h1>Order Form</h1>
+
+<form [formGroup]="formGroup">
+  <mat-form-field *ngFor="let control of controls | keyvalue" class="form-container">
+    <mat-label>{{control.key}}</mat-label>
+    <input matInput formControlName="{{control.key}}">
+    <mat-error *ngIf="control.value.invalid">{{getErrorMessage(control.value)}}</mat-error>
+  </mat-form-field>
+</form>
+
+<button  mat-button color="primary" (click)="submitForm(formGroup)" class="save-items-button">Save</button>
+
+<div *ngIf="createdItem" class="order-summary">
+  <mat-card class="item-summary">
+    <mat-card-title>Order Summary</mat-card-title>
+    <div>
+        <div class="created-item-key">{{ createdItem.name }}: </div>
+        <div class="created-item-value">{{ createdItem.description }} </div>
+    </div>
+  </mat-card>
+</div>
