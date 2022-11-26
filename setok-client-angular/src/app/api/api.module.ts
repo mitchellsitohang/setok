@@ -6,6 +6,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { HomeService } from './services/home.service';
 import { ItemService } from './services/item.service';
+import { UserService } from './services/user.service';
 
 /**
  * Module that provides all services and configuration.
@@ -17,6 +18,7 @@ import { ItemService } from './services/item.service';
   providers: [
     HomeService,
     ItemService,
+    UserService,
     ApiConfiguration
   ],
 })

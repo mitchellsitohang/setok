@@ -15,9 +15,18 @@ public class ItemService : IItemService, IHasLogger
 
     public async Task<ItemDto> CreateItemAsync(ItemDto item)
     {
-        await DbContext.AddAsync(Mapper.Map<Item>(item));
+        var entityAdded = (await DbContext.AddAsync(Mapper.Map<Item>(item))).Entity;
         await DbContext.SaveChangesAsync();
-        return item;
+
+        return new ItemDto() {
+            Id = entityAdded.Id,
+            Category = entityAdded.Category,
+            Description = entityAdded.Description,
+            Image = entityAdded.Image,
+            Name = entityAdded.Name,
+            Price = entityAdded.Price,
+            Quantity = entityAdded.Quantity
+        };
     }
 
     public async Task<ItemDto?> DeleteItemAsync(int id)
