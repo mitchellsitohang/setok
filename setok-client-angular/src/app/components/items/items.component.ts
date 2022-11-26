@@ -6,7 +6,7 @@ import { FormService } from 'src/app/services/form.service';
 
 @Component({
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  styleUrls: ['./items.component.scss'],
 })
 export class ItemsComponent implements OnInit {
   formGroup: FormGroup;
@@ -14,10 +14,20 @@ export class ItemsComponent implements OnInit {
   createdItem?: Map<string, any>;
   items: Map<string, any>[] = [];
 
-  constructor(private formService: FormService, private itemService: ItemService) {
-    const properties = ["category", "description", "image", "name", "price", "quantity"];
+  constructor(
+    private formService: FormService,
+    private itemService: ItemService
+  ) {
+    const properties = [
+      'category',
+      'description',
+      'image',
+      'name',
+      'price',
+      'quantity',
+    ];
     this.formGroup = this.formService.getFormGroup(properties);
-    this.controls  = this.formGroup.controls;
+    this.controls = this.formGroup.controls;
   }
 
   ngOnInit(): void {
@@ -25,29 +35,30 @@ export class ItemsComponent implements OnInit {
   }
 
   onSubmit(formGroup: FormGroup) {
-    const item : ItemDto = {
-      category : formGroup.controls["category"].value,
-      description : formGroup.controls["description"].value,
-      image : formGroup.controls["image"].value,
-      name : formGroup.controls["name"].value,
-      price : formGroup.controls["price"].value as number,
-      quantity : formGroup.controls["quantity"].value as number,
+    const item: ItemDto = {
+      category: formGroup.controls['category'].value,
+      description: formGroup.controls['description'].value,
+      image: formGroup.controls['image'].value,
+      name: formGroup.controls['name'].value,
+      price: formGroup.controls['price'].value as number,
+      quantity: formGroup.controls['quantity'].value as number,
     };
 
-    this.itemService.itemPost$Json({ body: item }).subscribe(res => {
+    this.itemService.itemPost$Json({ body: item }).subscribe((res) => {
       this.createdItem = new Map(Object.entries(item));
       this.getItems();
-    }), (error: any) => {
-      console.log(error);
-    }
+    }),
+      (error: any) => {
+        console.log(error);
+      };
   }
 
   private getItems() {
-    this.itemService.itemGet$Json().subscribe(res => {
-      this.items = res.map(item => new Map(Object.entries(item))).reverse();
-    }), (error: any) => {
-      console.log(error);
-    };
+    this.itemService.itemGet$Json().subscribe((res) => {
+      this.items = res.map((item) => new Map(Object.entries(item))).reverse();
+    }),
+      (error: any) => {
+        console.log(error);
+      };
   }
-
 }

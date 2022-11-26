@@ -1,10 +1,33 @@
-<div class="card">
-    <table>
+<!-- <div class="card">
+  <table>
     <tbody>
-        <tr *ngFor="let product of products">
-            <td>{{product.id}}</td>
-            <td>{{product.description}}</td>
-        </tr>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.description }}</td>
+      </tr>
     </tbody>
-</table>
-</div>
+  </table>
+</div> -->
+<form [formGroup]="productForm">
+  <label for="category">Category</label>
+  <input placeholder="Category" formControlName="category" required />
+  <label for="description">Description</label>
+  <input placeholder="Description" formControlName="description" required />
+  <label for="image">Image</label>
+  <input placeholder="Image" formControlName="image" required />
+  <label for="name">Name</label>
+  <input placeholder="Name" formControlName="name" required />
+  <label for="price">Price</label>
+  <input placeholder="Price" formControlName="price" required />
+  <label for="quantity">Quantity</label>
+  <input placeholder="Quantity" formControlName="quantity" required />
+</form>
+<button class="btn btn-primary" (click)="onSubmit(productForm)">Ok</button>
+
+<br />
+{{ productForm.valid }} <br />
+{{ productForm.dirty }} <br />{{ productForm.touched }} <br />{{
+  productForm.value
+}}
+
+<h3>{{ products | json }}</h3>
