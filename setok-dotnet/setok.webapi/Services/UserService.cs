@@ -18,11 +18,8 @@ public class UserService : IUserService
         
         while (await usersAsync.MoveNextAsync())
         {
-            users.Add(new UserDto{
-                Email = usersAsync.Current.Email,
-                Password = usersAsync.Current.Password,
-                Id = usersAsync.Current.Id
-            });
+            var userDto = Mapper.Map<UserDto>(usersAsync.Current);
+            users.Add(userDto);
         }
 
         return users;
@@ -30,19 +27,9 @@ public class UserService : IUserService
 
     public async Task<UserDto> CreateUserAsync(UserDto userDto)
     {
-        var user = new User {
-            Email = userDto.Email,
-            Password = userDto.Password 
-        };
-        
+        var user = Mapper.Map<User>(userDto);
         var addedUser = (await DbContext.AddAsync(user)).Entity;
         await DbContext.SaveChangesAsync();
-
-        return new UserDto 
-        {
-            Id = addedUser.Id,
-            Email = addedUser.Email,
-            Password = addedUser.Password
-        };
+        return Mapper.Map<UserDto>(user);
     }
 }
