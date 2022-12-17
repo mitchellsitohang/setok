@@ -8,12 +8,14 @@ import { ItemService } from 'src/app/api/services';
 
 @Component({
   templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductComponent implements OnInit {
   productForm: FormGroup;
   products: ItemDto[] = [];
   //   createdItem?: Map<string, any>;
   errorMessage = '';
+  // hier de fromcontrolnames zetten met validators.required
 
   constructor(
     private formService: FormService,
@@ -36,7 +38,7 @@ export class ProductComponent implements OnInit {
 
   onSubmit(productForm: FormGroup) {
     console.log(this.productForm);
-    console.log(JSON.stringify(this.productForm.value));
+    // console.log(JSON.stringify(this.productForm.value));
     const item: ItemDto = {
       category: productForm.controls['category'].value,
       description: productForm.controls['description'].value,
