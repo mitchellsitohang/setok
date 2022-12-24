@@ -10,6 +10,7 @@ internal static class DependancyInjectionModule
         services.AddScoped<IItemService, ItemService>();
         services.AddScoped<IDateTimeService, DateTimeService>();
         services.AddScoped<IStopwatchService, StopwatchService>();
+        services.AddScoped<IUserService, UserService>();
     }
 
     internal static void RegisterLogger<T>(IServiceCollection services)
