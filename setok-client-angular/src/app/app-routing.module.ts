@@ -4,8 +4,9 @@ import { ItemsTauryComponent } from './components/items-taury/items-taury/items-
 import { ItemsComponent } from './components/items/items.component';
 
 const routes: Routes = [
-  // { path: '', component: ItemsComponent },
-  { path: '', component: ItemsTauryComponent}
+  { path: 'home', component: ItemsComponent },
+  { path: 'items', component: ItemsTauryComponent}
+
 ];
 
 @NgModule({

@@ -16,12 +16,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
-    ItemsTauryComponent
+    ItemsTauryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
