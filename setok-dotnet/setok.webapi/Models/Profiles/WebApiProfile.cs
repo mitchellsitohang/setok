@@ -6,5 +6,7 @@ public class WebApiProfile : Profile
 	{
 		CreateMap<ItemDto, Item>();
 		CreateMap<Item, ItemDto>();
+		CreateMap<User, UserDto>();
+		CreateMap<UserDto, User>();
 	}
 }

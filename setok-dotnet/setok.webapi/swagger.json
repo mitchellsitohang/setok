@@ -455,8 +455,13 @@
       },
       "UserDto": {
         "required": [
+          "city",
+          "country",
           "email",
-          "password"
+          "lastName",
+          "name",
+          "password",
+          "streetName"
         ],
         "type": "object",
         "properties": {
@@ -471,6 +476,31 @@
           "password": {
             "minLength": 1,
             "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "lastName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "streetName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "city": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false

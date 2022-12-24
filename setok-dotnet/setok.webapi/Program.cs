@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using static Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 AddDbContexts(builder);
@@ -17,7 +18,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 WebApplication? app;
 try
 {
@@ -32,7 +32,7 @@ catch (System.Exception e)
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    
+
 }
 // app.UseHsts();
 app.UseHttpsRedirection();
@@ -73,6 +73,7 @@ static void AddDbContexts(WebApplicationBuilder builder)
 {
     builder.Services.AddDbContext<SetokContext>();
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+    UpdateDatabase(builder);
 }
 
 static void ConfigureAppForDevelopment(WebApplication app)
@@ -81,4 +82,10 @@ static void ConfigureAppForDevelopment(WebApplication app)
     app.UseCors("AllowAll");
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+static void UpdateDatabase(WebApplicationBuilder builder)
+{
+    var context = builder.Services.BuildServiceProvider().GetService<SetokContext>();
+    context?.Database.Migrate();
 }
