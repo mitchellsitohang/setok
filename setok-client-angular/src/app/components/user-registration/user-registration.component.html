@@ -1,0 +1,8 @@
+<h1>User Registration</h1>
+<form [formGroup]="formGroup">
+    <mat-form-field *ngFor="let formControlLabel of formOrder" class="form-container">
+      <mat-label>{{ formControlLabel.labelName }}</mat-label>
+      <input matInput formControlName="{{ formControlLabel.controlName }}">
+      <mat-error *ngIf="formGroup.get(formControlLabel.controlName)">{{ formService.getErrorMessage(formGroup.get(formControlLabel.controlName))}}</mat-error>
+    </mat-form-field>
+</form>

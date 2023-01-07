@@ -16,12 +16,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
-    ItemsTauryComponent
+    ItemsTauryComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
