@@ -11,7 +11,7 @@
 <button  mat-button color="primary" (click)="submitForm(formGroup)" class="save-items-button">Save</button>
 
 <div *ngIf="createdItem" class="order-summary">
-  <mat-card class="item-summary">
+  <mat-card appearance="outlined" class="item-summary">
     <mat-card-title>Order Summary</mat-card-title>
     <div>
         <div class="created-item-key">{{ createdItem.name }}: </div>
