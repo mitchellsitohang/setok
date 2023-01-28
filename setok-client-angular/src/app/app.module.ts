@@ -12,18 +12,20 @@ import { environment } from 'src/environments/environment';
 import { FormService } from './services/form.service';
 import { ItemsTauryComponent } from './components/items-taury/items-taury/items-taury.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
     ItemsTauryComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,14 +37,16 @@ import { HomeComponent } from './components/home/home.component';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule 
+    MatInputModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: SetokHttpInterceptor,
-    multi: true
-  },
-  FormService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SetokHttpInterceptor,
+      multi: true,
+    },
+    FormService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
