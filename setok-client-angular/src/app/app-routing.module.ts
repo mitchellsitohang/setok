@@ -5,12 +5,11 @@ import { ItemsTauryComponent } from './components/items-taury/items-taury/items-
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'items', component: ItemsTauryComponent}
-
+  { path: 'items', component: ItemsTauryComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

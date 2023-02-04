@@ -1,0 +1,31 @@
+nav {
+  background-color: darkslategray;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+img {
+  float: left;
+}
+
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 900;
+  padding: 1.25rem 2rem;
+  display: block;
+  float: left;
+}
+
+nav a:hover {
+  background-color: rgb(97, 136, 136);
+  color: black;
+}
+
+.wrapper {
+  margin-bottom: 100px;
+}
