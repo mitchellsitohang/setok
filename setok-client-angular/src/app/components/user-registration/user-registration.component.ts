@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistrationDto } from 'src/app/api/models/registration-dto';
 import { FormService } from 'src/app/services/form.service';
 
 export interface FormControlLabel {
@@ -28,32 +29,40 @@ export class UserRegistrationComponent implements OnInit {
     this.getFormControlLabel('country', 'Country'),
     this.getFormControlLabel('phone', 'Phone')
   ];
-  emailAddress = new FormControl('', [Validators.required]);
-  pass = new FormControl('', [Validators.required]);
-  passValidation = new FormControl('', [Validators.required]);
-  zipcode = new FormControl('', [Validators.required]);
-  streetname = new FormControl('', [Validators.required]);
-  city = new FormControl('', [Validators.required]);
-  country = new FormControl('', [Validators.required]);
-  phoneNumber = new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]);
+  
 
   formGroup: FormGroup = new FormGroup([]);
 
   constructor(public formService: FormService) { }
 
   ngOnInit(): void {
+    const pass = new FormControl('', [Validators.required, Validators.minLength(8)]);
     const properties = {
-      email: this.emailAddress,
-      pass: this.pass,
-      passValidation: this.passValidation,
-      zipcode: this.zipcode,
-      streetname: this.streetname,
-      city: this.city,
-      country: this.country,
-      phone: this.phoneNumber
+      email: this.formService.getEmailControl(),
+      pass: pass,
+      passValidation: new FormControl('', [Validators.required, this.formService.validatePass(pass), this.formService.passwordIsConfirmed(pass), this.formService.validateAmountOfChars(pass)]),
+      zipcode: this.formService.getRequiredControl(),
+      streetname: this.formService.getRequiredControl(),
+      city: this.formService.getRequiredControl(),
+      country: new FormControl('', [Validators.required, this.formService.validateTaury()]),
+      phone: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required])
     };
-
     this.formGroup = this.formService.getFormGroup(properties);
+  }
+
+  public submitForm(formGroup: FormGroup) {
+    const registrationForm: RegistrationDto = {
+      email: this.formGroup.controls['email'].value,
+      pass: this.formGroup.controls['pass'].value,
+      passValidation: this.formGroup.controls['passValidation'].value,
+      zipcode: this.formGroup.controls['zipcode'].value,
+      streetname: this.formGroup.controls['streetname'].value,
+      city: this.formGroup.controls['city'].value,
+      country: this.formGroup.controls['country'].value,
+      phone: this.formGroup.controls['phone'].value,
+    };
+    console.log(registrationForm, 'registrationform');
+    formGroup.reset;
   }
 
   private getFormControlLabel(name: string, label: string): FormControlLabel {
