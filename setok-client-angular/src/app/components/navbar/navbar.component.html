@@ -1,12 +1,30 @@
-<div class="wrapper">
-  <nav>
-    <img
-      src="assets/images/logo-final.jpg"
-      alt="setok_logo"
-      width="75"
-      height="60"
-    />
-    <a routerLink="/home">Home</a>
-    <a routerLink="/items">Items</a>
+<header>
+  <nav class="navbar">
+    <!-- <div> -->
+    <div>
+      <img
+        src="assets/images/logo-final.jpg"
+        alt="setok_logo"
+        width="75"
+        height="60"
+      />
+    </div>
+    <div>
+      <span id="span">setok</span>
+    </div>
+    <!-- </div> -->
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a routerLink="/home" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/items" class="nav-link">Items</a>
+      </li>
+    </ul>
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
   </nav>
-</div>
+</header>
