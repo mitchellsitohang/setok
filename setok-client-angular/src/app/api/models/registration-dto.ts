@@ -1,10 +1,13 @@
+/* tslint:disable */
+/* eslint-disable */
 export interface RegistrationDto {
-    email: string;
-    pass: string;
-    passValidation: string;
-    zipcode: string;
-    streetname: string;
-    city: string;
-    country: string;
-    phone: number;
+  city: string;
+  country: string;
+  email: string;
+  id?: number;
+  pass: string;
+  passValidation: string;
+  phone: number;
+  streetname: string;
+  zipcode: string;
 }

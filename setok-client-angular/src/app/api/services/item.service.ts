@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpContext } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -34,7 +34,10 @@ export class ItemService extends BaseService {
    * This method doesn't expect any request body.
    */
   itemGet$Plain$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<ItemDto>>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<ItemDto>>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemGetPath, 'get');
     if (params) {
@@ -42,7 +45,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -52,15 +56,18 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemGet$Plain(params?: {
-  }): Observable<Array<ItemDto>> {
+  },
+  context?: HttpContext
 
-    return this.itemGet$Plain$Response(params).pipe(
+): Observable<Array<ItemDto>> {
+
+    return this.itemGet$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<ItemDto>>) => r.body as Array<ItemDto>)
     );
   }
@@ -72,7 +79,10 @@ export class ItemService extends BaseService {
    * This method doesn't expect any request body.
    */
   itemGet$Json$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<ItemDto>>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<ItemDto>>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemGetPath, 'get');
     if (params) {
@@ -80,7 +90,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -90,15 +101,18 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemGet$Json(params?: {
-  }): Observable<Array<ItemDto>> {
+  },
+  context?: HttpContext
 
-    return this.itemGet$Json$Response(params).pipe(
+): Observable<Array<ItemDto>> {
+
+    return this.itemGet$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<ItemDto>>) => r.body as Array<ItemDto>)
     );
   }
@@ -116,7 +130,10 @@ export class ItemService extends BaseService {
    */
   itemPost$Plain$Response(params?: {
     body?: ItemDto
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemPostPath, 'post');
     if (params) {
@@ -125,7 +142,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -135,16 +153,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemPost$Plain$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   itemPost$Plain(params?: {
     body?: ItemDto
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemPost$Plain$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemPost$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -157,7 +178,10 @@ export class ItemService extends BaseService {
    */
   itemPost$Json$Response(params?: {
     body?: ItemDto
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemPostPath, 'post');
     if (params) {
@@ -166,7 +190,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -176,16 +201,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemPost$Json$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
   itemPost$Json(params?: {
     body?: ItemDto
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemPost$Json$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemPost$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -203,7 +231,10 @@ export class ItemService extends BaseService {
    */
   itemIdGet$Plain$Response(params: {
     id: number;
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdGetPath, 'get');
     if (params) {
@@ -212,7 +243,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -222,16 +254,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemIdGet$Plain(params: {
     id: number;
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdGet$Plain$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdGet$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -244,7 +279,10 @@ export class ItemService extends BaseService {
    */
   itemIdGet$Json$Response(params: {
     id: number;
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdGetPath, 'get');
     if (params) {
@@ -253,7 +291,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -263,16 +302,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemIdGet$Json(params: {
     id: number;
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdGet$Json$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdGet$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -291,7 +333,10 @@ export class ItemService extends BaseService {
   itemIdPut$Plain$Response(params: {
     id: number;
     body?: ItemDto
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdPutPath, 'put');
     if (params) {
@@ -301,7 +346,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -311,7 +357,7 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdPut$Plain$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
@@ -319,9 +365,12 @@ export class ItemService extends BaseService {
   itemIdPut$Plain(params: {
     id: number;
     body?: ItemDto
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdPut$Plain$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdPut$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -335,7 +384,10 @@ export class ItemService extends BaseService {
   itemIdPut$Json$Response(params: {
     id: number;
     body?: ItemDto
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdPutPath, 'put');
     if (params) {
@@ -345,7 +397,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -355,7 +408,7 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdPut$Json$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
@@ -363,9 +416,12 @@ export class ItemService extends BaseService {
   itemIdPut$Json(params: {
     id: number;
     body?: ItemDto
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdPut$Json$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdPut$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -383,7 +439,10 @@ export class ItemService extends BaseService {
    */
   itemIdDelete$Plain$Response(params: {
     id: number;
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdDeletePath, 'delete');
     if (params) {
@@ -392,7 +451,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -402,16 +462,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdDelete$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemIdDelete$Plain(params: {
     id: number;
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdDelete$Plain$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdDelete$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }
@@ -424,7 +487,10 @@ export class ItemService extends BaseService {
    */
   itemIdDelete$Json$Response(params: {
     id: number;
-  }): Observable<StrictHttpResponse<ItemDto>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<ItemDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, ItemService.ItemIdDeletePath, 'delete');
     if (params) {
@@ -433,7 +499,8 @@ export class ItemService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -443,16 +510,19 @@ export class ItemService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `itemIdDelete$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   itemIdDelete$Json(params: {
     id: number;
-  }): Observable<ItemDto> {
+  },
+  context?: HttpContext
 
-    return this.itemIdDelete$Json$Response(params).pipe(
+): Observable<ItemDto> {
+
+    return this.itemIdDelete$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<ItemDto>) => r.body as ItemDto)
     );
   }

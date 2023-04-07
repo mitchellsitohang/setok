@@ -7,6 +7,5 @@ export interface ItemDto {
   image?: null | string;
   name?: null | string;
   price?: number;
-  properties?: null | Array<string>;
   quantity?: number;
 }
