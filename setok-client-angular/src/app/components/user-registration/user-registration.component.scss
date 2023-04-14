@@ -22,3 +22,17 @@ form.user-registration-form {
 button.save-items-button {
     margin: 10px 0 0 25px;
 }
+
+@media (max-width: 650px) {
+  form.user-registration-form {
+    width: 75%;
+    padding-left: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  form.user-registration-form {
+    width: 60%;
+    padding: 5px 20px 5px 0;
+  }
+}
