@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegistrationDto } from 'src/app/api/models/registration-dto';
+import { RegistrationService } from 'src/app/api/services';
 import { FormService } from 'src/app/services/form.service';
 
 export interface FormControlLabel {
@@ -33,7 +35,11 @@ export class UserRegistrationComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup([]);
 
-  constructor(public formService: FormService) { }
+  constructor(
+    public formService: FormService,
+    private registrationService: RegistrationService,
+    private snackBar: MatSnackBar,
+    ) { }
 
   ngOnInit(): void {
     const pass = new FormControl('', [Validators.required, Validators.minLength(8)]);
@@ -61,11 +67,25 @@ export class UserRegistrationComponent implements OnInit {
       country: this.formGroup.controls['country'].value,
       phone: this.formGroup.controls['phone'].value,
     };
-    console.log(registrationForm, 'registrationform');
-    formGroup.reset;
+
+    var post$ = this.registrationService.registrationPost$Json({
+      body: registrationForm,
+    })
+    
+    post$.subscribe({
+      next: (r) => { 
+        this.showSnackbar(`User registration for ${r.email} successful.`);
+        formGroup.reset;
+      },
+      error: (e) => this.showSnackbar(`User registration for ${e.email} failed.`)
+    });
   }
 
   private getFormControlLabel(name: string, label: string): FormControlLabel {
     return { controlName: name, labelName: label };
+  }
+
+  private showSnackbar(message: string): void {
+    this.snackBar.open(message);
   }
 }
