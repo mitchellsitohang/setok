@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("[controller]")]
-public class MigrationsController : ControllerBase 
+public class MigrationsController : ControllerBase
 {
     private readonly SetokContext _context;
 
@@ -15,10 +15,15 @@ public class MigrationsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult> Get()
     {
-        try {
+        try
+        {
+            // Migrate the database to the latest version
             await _context.Database.MigrateAsync();
+            // Create the database if it does not already exist
             await _context.Database.EnsureCreatedAsync();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             var message = "C:\\Users\\{User}\\AppData\\Local\\setok.db";
             return BadRequest($"Error migrating db, try delete: {message} -- Exception: {e.Message}");
         }

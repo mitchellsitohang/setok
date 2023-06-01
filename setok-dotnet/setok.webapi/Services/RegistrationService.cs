@@ -1,3 +1,6 @@
+using System.Security.Cryptography;
+using System.Text;
+
 public class RegistrationService : IRegistrationService
 {
     private readonly SetokContext _context;
@@ -78,5 +81,40 @@ public class RegistrationService : IRegistrationService
             Country = user.Entity.Country,
             Phone = user.Entity.Phone
         };
+    }
+
+    private string GetPassword(string pass)
+    {
+        var password = new Password(pass);
+        return password.Hash;
+    }
+
+    private bool VerifyPassword(string pass, string hash)
+    {
+        var password = new Password(pass);
+        return password.Verify(hash);
+    }
+}
+
+public class Password
+{
+    public string Hash { get; set; }
+    public Password(string pass)
+    {
+        Hash = HashPassword(pass);
+    }
+
+    private string HashPassword(string pass)
+    {
+        using (var sha256 = SHA256.Create())
+        {
+            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
+            return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+        }        
+    }
+
+    private bool Verify(string hash, string pass)
+    {
+        return hash == HashPassword(pass);
     }
 }

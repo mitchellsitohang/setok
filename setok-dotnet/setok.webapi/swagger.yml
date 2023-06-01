@@ -185,6 +185,62 @@ paths:
       responses:
         '200':
           description: Success
+  /QR:
+    post:
+      tags:
+        - QR
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QRCodeDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/QRCodeDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/QRCodeDto'
+      responses:
+        '200':
+          description: Success
+  /QR/multiple:
+    post:
+      tags:
+        - QR
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: Success
+  '/QR/{id}':
+    get:
+      tags:
+        - QR
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
   /Registration:
     post:
       tags:
@@ -293,6 +349,13 @@ components:
           type: integer
           format: int32
         content:
+          type: string
+          nullable: true
+      additionalProperties: false
+    QRCodeDto:
+      type: object
+      properties:
+        text:
           type: string
           nullable: true
       additionalProperties: false
