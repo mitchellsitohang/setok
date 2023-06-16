@@ -18,13 +18,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegistrationTableComponent } from './components/registration-table/registration-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
     ItemsTauryComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    RegistrationTableComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

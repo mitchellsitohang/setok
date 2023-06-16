@@ -1,0 +1,5 @@
+<table mat-table [dataSource]="dataSource">
+    <mat-text-column *ngFor="let column of columnsToDisplay" name="{{column}}"></mat-text-column>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
