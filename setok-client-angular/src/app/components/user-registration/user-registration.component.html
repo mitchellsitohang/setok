@@ -7,4 +7,4 @@
       <mat-error *ngIf="formGroup.get(formControlLabel.controlName)">{{ formService.getErrorMessage(formGroup.get(formControlLabel.controlName))}}</mat-error>
     </mat-form-field>
 </form>
-<button  mat-button color="primary" (click)="submitForm(formGroup)" class="save-items-button">Save</button>
+<button  mat-button color="primary" (click)="submitForm(formGroup)" class="save-items-button submit">Save</button>

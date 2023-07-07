@@ -1,3 +1,5 @@
+@import '../../general-styling.scss';
+
 h1 {
     margin: 0 5px 20px 25px;
 }
@@ -7,20 +9,10 @@ form.user-registration-form {
     width: 525px;
     padding: 25px 30px;
     border: solid 1px;
-
-    mat-form-field.form-container {
-    display: block;
-    margin: 15px 0 20px 25px;
-
-    mat-label {
-        font-weight: 600;
-        text-transform: capitalize;
-        }
-    }
 }
 
-button.save-items-button {
-    margin: 10px 0 0 25px;
+button {
+  margin: 10px 25px;
 }
 
 @media (max-width: 650px) {
