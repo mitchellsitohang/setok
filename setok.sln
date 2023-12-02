@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "setok-dotnet", "setok-dotnet", "{5062E568-B8BD-4AB2-A2B0-F13FAB28079A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "setok.db", "setok-dotnet\setok.db\setok.db.csproj", "{072C705C-B60C-4A17-9B75-A937A4747474}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "setok-api-dotnet", "setok-dotnet\setok.webapi\setok-api-dotnet.csproj", "{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{072C705C-B60C-4A17-9B75-A937A4747474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072C705C-B60C-4A17-9B75-A937A4747474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072C705C-B60C-4A17-9B75-A937A4747474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072C705C-B60C-4A17-9B75-A937A4747474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{072C705C-B60C-4A17-9B75-A937A4747474} = {5062E568-B8BD-4AB2-A2B0-F13FAB28079A}
+		{DF7692DD-FB3A-4AC3-AB3F-EAD1EBEC2597} = {5062E568-B8BD-4AB2-A2B0-F13FAB28079A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8F57FD9-94EA-499D-9631-FDB6D0461720}
+	EndGlobalSection
+EndGlobal
