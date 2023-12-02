@@ -8,7 +8,7 @@ import { RegistrationTableComponent } from './components/registration-table/regi
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'items', component: ItemsTauryComponent },,
+  { path: 'items', component: ItemsTauryComponent },
   { path: 'registration', component: UserRegistrationComponent},
   { path: 'registration-table', component: RegistrationTableComponent },
   { path: '', component: ItemsTauryComponent},

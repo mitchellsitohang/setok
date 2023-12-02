@@ -86,5 +86,5 @@ static void ConfigureAppForDevelopment(WebApplication app)
 static void UpdateDatabase(WebApplicationBuilder builder)
 {
     var context = builder.Services.BuildServiceProvider().GetService<SetokContext>();
-    context?.Database.Migrate();
+    // context?.Database.Migrate();
 }
