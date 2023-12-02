@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Directive, HostBinding, HostListener } from '@angular/core';
 
 @Component({
   selector: 'navbar',
@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   constructor() {}
+
+  ngOnInit(): void {
+    const check = document.querySelector('#check') as HTMLInputElement;
+
+    document.querySelectorAll('.nav-link').forEach((n) =>
+      n.addEventListener('click', () => {
+        check.checked = false;
+      })
+    );
+  }
 }

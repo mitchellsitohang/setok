@@ -12,18 +12,24 @@ import { environment } from 'src/environments/environment';
 import { FormService } from './services/form.service';
 import { ItemsTauryComponent } from './components/items-taury/items-taury/items-taury.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
+import {  MatFormFieldModule  } from '@angular/material/form-field';
+import {  MatButtonModule  } from '@angular/material/button';
+import {  MatCardModule  } from '@angular/material/card';
+import {  MatInputModule  } from '@angular/material/input';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegistrationTableComponent } from './components/registration-table/registration-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemsComponent,
     ItemsTauryComponent,
+    UserRegistrationComponent,
+    RegistrationTableComponent,
     HomeComponent,
     NavbarComponent,
   ],
@@ -38,12 +44,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SetokHttpInterceptor,
-      multi: true,
+      multi: true
     },
     FormService,
   ],

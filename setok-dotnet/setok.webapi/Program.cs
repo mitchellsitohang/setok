@@ -78,7 +78,6 @@ static void AddDbContexts(WebApplicationBuilder builder)
 
 static void ConfigureAppForDevelopment(WebApplication app)
 {
-    app.UseMigrationsEndPoint();
     app.UseCors("AllowAll");
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -87,5 +86,5 @@ static void ConfigureAppForDevelopment(WebApplication app)
 static void UpdateDatabase(WebApplicationBuilder builder)
 {
     var context = builder.Services.BuildServiceProvider().GetService<SetokContext>();
-    context?.Database.Migrate();
+    // context?.Database.Migrate();
 }

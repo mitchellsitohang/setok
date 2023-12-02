@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpContext } from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -35,7 +35,10 @@ export class HomeService extends BaseService {
    * This method doesn't expect any request body.
    */
   homeGet$Plain$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<Message>>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<Message>>> {
 
     const rb = new RequestBuilder(this.rootUrl, HomeService.HomeGetPath, 'get');
     if (params) {
@@ -43,7 +46,8 @@ export class HomeService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -53,15 +57,18 @@ export class HomeService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `homeGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   homeGet$Plain(params?: {
-  }): Observable<Array<Message>> {
+  },
+  context?: HttpContext
 
-    return this.homeGet$Plain$Response(params).pipe(
+): Observable<Array<Message>> {
+
+    return this.homeGet$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<Message>>) => r.body as Array<Message>)
     );
   }
@@ -73,7 +80,10 @@ export class HomeService extends BaseService {
    * This method doesn't expect any request body.
    */
   homeGet$Json$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<Message>>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<Array<Message>>> {
 
     const rb = new RequestBuilder(this.rootUrl, HomeService.HomeGetPath, 'get');
     if (params) {
@@ -81,7 +91,8 @@ export class HomeService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -91,15 +102,18 @@ export class HomeService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `homeGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   homeGet$Json(params?: {
-  }): Observable<Array<Message>> {
+  },
+  context?: HttpContext
 
-    return this.homeGet$Json$Response(params).pipe(
+): Observable<Array<Message>> {
+
+    return this.homeGet$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<Array<Message>>) => r.body as Array<Message>)
     );
   }
@@ -117,7 +131,10 @@ export class HomeService extends BaseService {
    */
   homePost$Plain$Response(params?: {
     message?: string;
-  }): Observable<StrictHttpResponse<SetokResult>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<SetokResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, HomeService.HomePostPath, 'post');
     if (params) {
@@ -126,7 +143,8 @@ export class HomeService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: 'text/plain',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -136,16 +154,19 @@ export class HomeService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `homePost$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   homePost$Plain(params?: {
     message?: string;
-  }): Observable<SetokResult> {
+  },
+  context?: HttpContext
 
-    return this.homePost$Plain$Response(params).pipe(
+): Observable<SetokResult> {
+
+    return this.homePost$Plain$Response(params,context).pipe(
       map((r: StrictHttpResponse<SetokResult>) => r.body as SetokResult)
     );
   }
@@ -158,7 +179,10 @@ export class HomeService extends BaseService {
    */
   homePost$Json$Response(params?: {
     message?: string;
-  }): Observable<StrictHttpResponse<SetokResult>> {
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<SetokResult>> {
 
     const rb = new RequestBuilder(this.rootUrl, HomeService.HomePostPath, 'post');
     if (params) {
@@ -167,7 +191,8 @@ export class HomeService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'json',
-      accept: 'text/json'
+      accept: 'text/json',
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -177,16 +202,19 @@ export class HomeService extends BaseService {
   }
 
   /**
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `homePost$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
   homePost$Json(params?: {
     message?: string;
-  }): Observable<SetokResult> {
+  },
+  context?: HttpContext
 
-    return this.homePost$Json$Response(params).pipe(
+): Observable<SetokResult> {
+
+    return this.homePost$Json$Response(params,context).pipe(
       map((r: StrictHttpResponse<SetokResult>) => r.body as SetokResult)
     );
   }

@@ -1,31 +1,145 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "montserrat", sans-serif;
+}
+
 nav {
+  height: 70px;
+  width: 100%;
   background-color: darkslategray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: 0;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+.logo-txt {
+  font-size: 20px;
+  line-height: 75px;
   color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-list {
   position: fixed;
   width: 100%;
-  top: 0;
-  z-index: 2;
+  height: 0vh;
+  top: 70px;
+  float: right;
+  text-align: center;
+  transition: all 0.5s;
+  background-color: rgb(37, 107, 107);
+  z-index: 99;
 }
 
-img {
-  float: left;
+.nav-list li {
+  opacity: 0;
+  line-height: 30px;
+  margin: 50px 0;
+  transition: all 0.5s;
 }
 
-nav a {
-  text-decoration: none;
-  text-transform: uppercase;
+.nav-list li a {
   color: white;
-  font-weight: 900;
-  padding: 1.25rem 2rem;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.nav-list li a.active,
+.nav-list li a:hover {
+  color: lightgrey;
+  transition: 0.5s;
+}
+
+.hamburger {
   display: block;
-  float: left;
+  cursor: pointer;
+  margin-right: 40px;
+  line-height: 75px;
+  margin-top: 20px;
+}
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: white;
+  -webkit-transition: all 0, 3s ease-in-out;
+  transition: all 0, 3s ease-in-out;
 }
 
-nav a:hover {
-  background-color: rgb(97, 136, 136);
-  color: black;
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-.wrapper {
-  margin-bottom: 100px;
+#check {
+  display: none;
+}
+#check:checked ~ .nav-list {
+  height: 100vh;
+}
+#check:checked ~ .nav-list li {
+  opacity: 1;
+}
+
+@media only screen and (min-width: 900px) {
+  .logo-container {
+    margin-left: 25px;
+  }
+
+  nav {
+    height: 80px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .nav-list {
+    position: relative;
+    height: 80px;
+    top: 0;
+    background-color: darkslategray;
+    float: right;
+    text-align: right;
+    margin-right: 25px;
+    transition: none;
+  }
+
+  .nav-list li {
+    display: inline-block;
+    opacity: 1;
+    line-height: 80px;
+    margin: 0 20px;
+    transition: none;
+  }
+
+  .nav-list li a.active,
+  .nav-list li a:hover {
+    color: lightgrey;
+  }
 }
