@@ -78,7 +78,6 @@ static void AddDbContexts(WebApplicationBuilder builder)
 
 static void ConfigureAppForDevelopment(WebApplication app)
 {
-    app.UseMigrationsEndPoint();
     app.UseCors("AllowAll");
     app.UseSwagger();
     app.UseSwaggerUI();

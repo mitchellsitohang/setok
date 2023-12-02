@@ -5,7 +5,7 @@ export interface ItemDto {
   description?: null | string;
   id?: number;
   image?: null | string;
-  name: string;
-  price: number;
-  quantity: number;
+  name?: null | string;
+  price?: number;
+  quantity?: number;
 }

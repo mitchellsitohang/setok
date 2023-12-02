@@ -8,24 +8,24 @@ paths:
       tags:
         - Home
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Message'
+                  $ref: "#/components/schemas/Message"
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Message'
+                  $ref: "#/components/schemas/Message"
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Message'
+                  $ref: "#/components/schemas/Message"
     post:
       tags:
         - Home
@@ -35,41 +35,41 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/SetokResult'
+                $ref: "#/components/schemas/SetokResult"
             application/json:
               schema:
-                $ref: '#/components/schemas/SetokResult'
+                $ref: "#/components/schemas/SetokResult"
             text/json:
               schema:
-                $ref: '#/components/schemas/SetokResult'
+                $ref: "#/components/schemas/SetokResult"
   /Item:
     get:
       tags:
         - Item
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ItemDto'
+                  $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ItemDto'
+                  $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ItemDto'
+                  $ref: "#/components/schemas/ItemDto"
     post:
       tags:
         - Item
@@ -77,27 +77,27 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
           text/json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
           application/*+json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
-  '/Item/{id}':
+                $ref: "#/components/schemas/ItemDto"
+  "/Item/{id}":
     get:
       tags:
         - Item
@@ -109,18 +109,18 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
     put:
       tags:
         - Item
@@ -135,26 +135,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
           text/json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
           application/*+json:
             schema:
-              $ref: '#/components/schemas/ItemDto'
+              $ref: "#/components/schemas/ItemDto"
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
     delete:
       tags:
         - Item
@@ -166,18 +166,99 @@ paths:
             type: integer
             format: int32
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
+  /Migrations:
+    get:
+      tags:
+        - Migrations
+      responses:
+        "200":
+          description: Success
+  /Registration:
+    post:
+      tags:
+        - Registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationDto"
+          text/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationDto"
+          application/*+json:
+            schema:
+              $ref: "#/components/schemas/RegistrationDto"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
+    get:
+      tags:
+        - Registration
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RegistrationDto"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RegistrationDto"
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RegistrationDto"
+  "/Registration/{id}":
+    get:
+      tags:
+        - Registration
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationDto"
   /User:
     post:
       tags:
@@ -186,48 +267,48 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserDto'
+              $ref: "#/components/schemas/UserDto"
           text/json:
             schema:
-              $ref: '#/components/schemas/UserDto'
+              $ref: "#/components/schemas/UserDto"
           application/*+json:
             schema:
-              $ref: '#/components/schemas/UserDto'
+              $ref: "#/components/schemas/UserDto"
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             application/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
             text/json:
               schema:
-                $ref: '#/components/schemas/ItemDto'
+                $ref: "#/components/schemas/ItemDto"
     get:
       tags:
         - User
       responses:
-        '200':
+        "200":
           description: Success
           content:
             text/plain:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserDto'
+                  $ref: "#/components/schemas/UserDto"
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserDto'
+                  $ref: "#/components/schemas/UserDto"
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserDto'
+                  $ref: "#/components/schemas/UserDto"
 components:
   schemas:
     ItemDto:
@@ -269,6 +350,46 @@ components:
         content:
           type: string
           nullable: true
+      additionalProperties: false
+    RegistrationDto:
+      required:
+        - city
+        - country
+        - email
+        - pass
+        - passValidation
+        - phone
+        - streetname
+        - zipcode
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        email:
+          minLength: 1
+          type: string
+        pass:
+          minLength: 1
+          type: string
+        passValidation:
+          minLength: 1
+          type: string
+        zipcode:
+          minLength: 1
+          type: string
+        streetname:
+          minLength: 1
+          type: string
+        city:
+          minLength: 1
+          type: string
+        country:
+          minLength: 1
+          type: string
+        phone:
+          type: integer
+          format: int32
       additionalProperties: false
     SetokResult:
       type: object
