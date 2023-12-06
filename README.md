@@ -17,6 +17,9 @@ dotnet ef database update
 In order to add migration run:
 dotnet ef migrations add 'your_migration_description'
 
+When you run into issues a manual delete of database file could be needed, delete this file:
+C:\Users\{username}\AppData\Local\setok.db
+
 ## SetokClientAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
