@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace setok.db.Migrations
 {
     [DbContext(typeof(SetokContext))]
-    [Migration("20221130091113_AddUserProperties")]
-    partial class AddUserProperties
+    [Migration("20231206160731_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,22 +83,18 @@ namespace setok.db.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("Pass")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PhoneNumber")
+                    b.Property<int>("Phone")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("StreetName")
+                    b.Property<string>("Streetname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Zipcode")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
