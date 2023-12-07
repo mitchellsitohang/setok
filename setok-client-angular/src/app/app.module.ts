@@ -22,6 +22,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegistrationTableComponent } from './components/registration-table/registration-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { SetokTableComponent } from './components/setok-table/setok-table.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatTableModule } from '@angular/material/table';
     RegistrationTableComponent,
     HomeComponent,
     NavbarComponent,
+    SetokTableComponent
   ],
   imports: [
     BrowserModule,
