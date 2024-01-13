@@ -1,11 +1,13 @@
 
 h1 {
-    margin: 0 5px 5px 25px;
+    margin: 25px 5px 20px 25px;
 }
 
 form {
-    margin: 0 5px 5px 5px;
-    width: 500px;
+    margin: 0 5px 20px 25px;
+    width: 525px;
+    padding: 25px 30px;
+    border: solid 1px;
 
     mat-form-field.form-container {
     display: block;

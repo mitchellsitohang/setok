@@ -1,0 +1,12 @@
+.mission-vision-section {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+
+    >div {
+        max-width: 800px;
+    }
+}

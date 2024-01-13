@@ -6,6 +6,8 @@ import { Component, Directive, HostBinding, HostListener } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  public navButtons = {};
+  public menuOpen = false;
   constructor() {}
 
   ngOnInit(): void {
@@ -13,8 +15,25 @@ export class NavbarComponent {
 
     document.querySelectorAll('.nav-link').forEach((n) =>
       n.addEventListener('click', () => {
-        check.checked = false;
+        check.checked = false;        
       })
     );
+    this.setNavButtons();
+  }
+
+  public getNavEntries() {
+    return Object.entries(this.navButtons);
+  }
+
+  public closeMenu(): void {
+    this.menuOpen = false;    
+  }
+  
+  private setNavButtons() {
+    this.navButtons = {
+      'Home': '/home',
+      'Items': '/items',
+      'Registration': '/registration'
+    };
   }
 }
