@@ -29,9 +29,9 @@ steps:
       configuration: "$(buildConfiguration)"
 
   - script: |
-      npm install -g @angular/cli  # Install Angular CLI globally
-      npm install  # Install project dependencies
-      ng build --configuration $(buildConfiguration)  # Build the Angular app
+      npm install -g @angular/cli
+      npm install
+      ng build --configuration $(buildConfiguration)
     displayName: "Build Angular App"
 
   - task: PublishBuildArtifacts@1
