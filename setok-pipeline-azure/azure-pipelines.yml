@@ -29,8 +29,8 @@ steps:
       configuration: "$(buildConfiguration)"
 
   - script: |
-      cd $(build.artifactStagingDirectory)/setok-client-angular
       ls -al
+      cd setok-client-angular
       npm install -g @angular/cli
       npm install
       ng build --configuration $(buildConfiguration) --output-path $(Build.SourcesDirectory)/setok-client-angular
