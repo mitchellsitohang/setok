@@ -29,6 +29,8 @@ steps:
       configuration: "$(buildConfiguration)"
 
   - script: |
+      echo "Current Directory Structure:"
+      tree /F /A
       cd setok-client-angular
       npm install -g @angular/cli
       npm install
