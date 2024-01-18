@@ -33,9 +33,16 @@ steps:
       cd setok-client-angular
       ls -al
       npm install
+      ls -al
+    displayName: "npm install"
+
+  - script: |
+      ls -al
+      cd setok-client-angular
+      ls -al
       npm run build-prod
       ls -al
-    displayName: "Build Angular App"
+    displayName: "npm run build-prod"
 
   - task: PublishBuildArtifacts@1
     inputs:
