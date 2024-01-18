@@ -29,12 +29,11 @@ steps:
       configuration: "$(buildConfiguration)"
 
   - script: |
-      echo "Current Directory Structure:"
-      tree /F /A
-      cd setok-client-angular
+      cd $(build.artifactStagingDirectory)/setok-client-angular
+      ls -al
       npm install -g @angular/cli
       npm install
-      ng build --configuration $(buildConfiguration)
+      ng build --configuration $(buildConfiguration) --output-path $(Build.SourcesDirectory)/setok-client-angular
     displayName: "Build Angular App"
 
   - script: |
@@ -43,6 +42,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: "setok-client-angular/dist/setok-client-angular/"
+      pathtoPublish: "$(Build.SourcesDirectory)/setok-client-angular"
       artifactName: "drop"
     displayName: "Publish Artifact"
