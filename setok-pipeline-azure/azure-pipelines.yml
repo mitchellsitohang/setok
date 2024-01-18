@@ -34,7 +34,8 @@ steps:
       ls -al
       npm install -g @angular/cli
       npm install
-      ng build --configuration $(buildConfiguration) --output-path $(Build.SourcesDirectory)/setok-client-angular
+      ng build --configuration $(buildConfiguration)
+      ls -al
     displayName: "Build Angular App"
 
   - script: |
