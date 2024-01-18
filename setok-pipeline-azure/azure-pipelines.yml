@@ -34,11 +34,11 @@ steps:
       cd setok-client-angular
       npm install -g @angular/cli
       npm install
-      ng build --configuration $(buildConfiguration) --output-path $(Build.SourcesDirectory)/dist
+      ng build --configuration $(buildConfiguration)
     displayName: "Build Angular App"
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: "$(Build.SourcesDirectory)/dist" # Path to the built artifacts
-      artifactName: "drop" # Name of the artifact to publish
+      pathtoPublish: "setok-client-angular/dist/setok-client-angular/"
+      artifactName: "drop"
     displayName: "Publish Artifact"
