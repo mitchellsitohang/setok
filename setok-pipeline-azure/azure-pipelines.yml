@@ -31,7 +31,7 @@ steps:
   - script: |
       npm install -g @angular/cli
       npm install
-      ng build --configuration $(buildConfiguration)
+      ng build --configuration $(buildConfiguration) --output-path "$(Build.SourcesDirectory)/dist"
     displayName: "Build Angular App"
 
   - task: PublishBuildArtifacts@1
