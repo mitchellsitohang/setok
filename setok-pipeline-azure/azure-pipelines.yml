@@ -37,6 +37,10 @@ steps:
       ng build --configuration $(buildConfiguration)
     displayName: "Build Angular App"
 
+  - script: |
+      echo "Current Directory Structure:"
+      tree /F /A
+
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: "setok-client-angular/dist/setok-client-angular/"
