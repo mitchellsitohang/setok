@@ -15,7 +15,7 @@ export class ItemsTauryComponent implements OnInit {
   category = new FormControl('', [Validators.required]);
   description = new FormControl('');
   quantity = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]);
-  price = new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]);
+  price = new FormControl('', [Validators.required, Validators.pattern("^\\d+(\\.\\d+)?$")]);
 
   formGroup: FormGroup = new FormGroup([]);
   controls: { [key: string]: AbstractControl<any> } = {};
